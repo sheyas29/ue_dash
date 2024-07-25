@@ -1,0 +1,106 @@
+.contract-page-container {
+    display: flex;
+    transition: all 0.3s ease;
+  }
+  
+  .contract-page-container.sidebar-open .contract-page {
+    margin-left: 270px;
+  }
+  
+  .contract-page-container.sidebar-closed .contract-page {
+    margin-left: 70px;
+  }
+  
+  .contract-page {
+    padding: 20px;
+    flex-grow: 1;
+    transition: margin-left 0.3s ease;
+  }
+  
+  /* .contract-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  } */
+  
+  /* .contract-header .left,
+  .contract-header .middle,
+  .contract-header .right {
+    flex: 1;
+  } */
+  
+  /* .contract-header .middle {
+    text-align: center;
+  }
+  
+  .contract-header .right {
+    text-align: right;
+  }
+  
+  .contract-header span {
+    display: block;
+    font-size: 1.2em;
+  }
+  
+  .contract-header .value {
+    font-weight: bold;
+  } */
+  
+  .navigation-links {
+    margin-top: 20px;
+  }
+  
+  .navigation-links a {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .navigation-links a:hover {
+    text-decoration: underline;
+  }
+  /* ContractPage.css */
+
+/* .salary-section {
+  margin-top: 20px;
+}
+
+.date-selector {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.date-selector label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.generate-salary,
+.display-salary {
+  margin-bottom: 20px;
+}
+
+.generate-salary button,
+.display-salary table {
+  margin-top: 10px;
+}
+
+.display-salary table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.display-salary th,
+.display-salary td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.display-salary th {
+  background-color: #f2f2f2;
+  text-align: left;
+} */

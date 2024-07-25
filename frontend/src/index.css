@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'Galgo Condensed';
+    src: 
+         url('C:/Users/kshre/OneDrive/Desktop/my-manpower-dashboard/frontend/public/fonts/Galgo.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Galgo Condensed';
+    src: 
+         url('C:/Users/kshre/OneDrive/Desktop/my-manpower-dashboard/frontend/public/fonts/Galgo.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  
+  
+  @layer base {
+    body {
+      @apply font-hind;
+    }
+  }
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+  
+  /* Add this to your global CSS file (index.css or global.css) */
+.hover-caret-visible:hover,
+.hover-caret-visible:focus {
+  caret-color: rgb(0, 0, 0); /* Ensure the caret color is black */
+  background-color: #f0f0f0; /* Add a background color for better contrast */
+}
+/* Add this to your global CSS file (index.css or global.css) */
+input:hover {
+    background-color: #f0f0f0 !important; /* Add a background color for better contrast */
+    cursor: black !important; /* Ensure the cursor is set to text */
+  }
+  

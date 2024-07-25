@@ -1,0 +1,40 @@
+.salary-display {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  margin-left: 0px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 5px;
+  text-align: center;
+  font-size: 12px;
+}
+
+thead {
+  background-color: #e63946;
+  color: white;
+}
+
+thead th {
+  font-weight: bold;
+}
+
+tfoot {
+  font-weight: bold;
+}
+
+.no-records {
+  text-align: center;
+  font-style: italic;
+}

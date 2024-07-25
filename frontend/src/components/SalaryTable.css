@@ -1,0 +1,44 @@
+.salary-table {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+  }
+  
+  .salary-table h2 {
+    margin-bottom: 20px;
+  }
+  
+  .salary-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .salary-table th, .salary-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .salary-table th {
+    background-color: #f4f4f4;
+  }
+  
+  .salary-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .salary-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .salary-table th, .salary-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .salary-table tr.total-row {
+    font-weight: bold;
+  }
+  

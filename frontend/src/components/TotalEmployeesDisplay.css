@@ -1,0 +1,21 @@
+.total-employees-box {
+  padding: 20px;
+  border: 1px solid #ddd;
+  margin: 20px 0;
+  border-radius: 5px;
+  background-color: hsl(0, 0%, 98%);
+  width: 150px;
+  text-align: center;
+}
+
+.total-employees-box h3 {
+  margin: 0;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.total-employees-box p {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 5px 0 0;
+}

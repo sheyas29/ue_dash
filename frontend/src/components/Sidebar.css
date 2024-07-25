@@ -1,0 +1,101 @@
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 250px;
+  background: #2c3e50;
+  color: #ecf0f1;
+  transition: all 0.3s ease;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.sidebar.closed {
+  width: 60px;
+}
+
+.sidebar button {
+  width: 100%;
+  padding: 15px;
+  background: #34495e;
+  color: #ecf0f1;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.sidebar button:hover {
+  background: #2980b9;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.sidebar li {
+  padding: 10px 20px;
+  transition: background 0.3s ease;
+}
+
+.sidebar li:hover {
+  background: #34495e;
+}
+
+.sidebar a {
+  color: #ecf0f1;
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.sidebar a:hover {
+  color: #3498db;
+}
+
+/* Styles for closed sidebar */
+.sidebar.closed button {
+  padding: 15px 0;
+  font-size: 20px;
+}
+
+.sidebar.closed button::after {
+  content: '☰';
+}
+
+.sidebar.closed button span {
+  display: none;
+}
+
+/* Animation for sidebar items */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.sidebar.open li {
+  animation: fadeIn 0.5s ease forwards;
+  opacity: 0;
+}
+
+.sidebar.open li:nth-child(1) { animation-delay: 0.1s; }
+.sidebar.open li:nth-child(2) { animation-delay: 0.2s; }
+.sidebar.open li:nth-child(3) { animation-delay: 0.3s; }
+/* Add more if you have more items */
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  
+  .sidebar.closed {
+    width: 100%;
+  }
+}

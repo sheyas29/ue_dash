@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-// import './GenerateSalary.css';
-
+import { API_URL } from '../config';  // Assuming you have a config.js file with API_URL exported
 
 const GenerateSalary = ({ contractId, month, year }) => {
   const [message, setMessage] = useState('');
@@ -9,7 +8,7 @@ const GenerateSalary = ({ contractId, month, year }) => {
   const handleGenerateSalaries = async () => {
     try {
       console.log(`Generating salaries for contractId: ${contractId}, month: ${month}, year: ${year}`);
-      const response = await axios.post(`http://localhost:5000/api/contracts/${contractId}/salaries/generate`, { month, year });
+      const response = await axios.post(`${API_URL}/${contractId}/salaries/generate`, { month, year });
       if (response.data.length > 0) {
         console.log('Salaries generated:', response.data);
         setMessage('Salaries generated successfully.');
@@ -25,7 +24,7 @@ const GenerateSalary = ({ contractId, month, year }) => {
   const handleDeleteSalaries = async () => {
     try {
       console.log(`Deleting salaries for contractId: ${contractId}, month: ${month}, year: ${year}`);
-      await axios.delete(`http://localhost:5000/api/contracts/${contractId}/salaries/delete`, { data: { month, year } });
+      await axios.delete(`${API_URL}/${contractId}/salaries/delete`, { data: { month, year } });
       console.log('Salaries deleted successfully.');
       setMessage('Salaries deleted successfully.');
     } catch (error) {

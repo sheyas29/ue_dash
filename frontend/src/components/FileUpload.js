@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Upload, FileText } from 'lucide-react';
+import { UPLOAD_API_URL } from '../config';
 
 const FileUpload = ({ onUpload }) => {
   const [file, setFile] = useState(null);
@@ -18,7 +19,7 @@ const FileUpload = ({ onUpload }) => {
     formData.append('file', file);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/upload', formData, {
+      const response = await axios.post(UPLOAD_API_URL, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -36,14 +37,14 @@ const FileUpload = ({ onUpload }) => {
     <div className="w-full max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden">
       <div className="px-6 py-4">
         <div className="flex items-center justify-center mb-4">
-          {/* <Upload className="w-8 h-8 text-blue-500 mr-2" /> */}
-          {/* <h2 className="text-xl font-semibold text-gray-800">Upload Contract PDF</h2> */}
+          <Upload className="w-8 h-8 text-blue-500 mr-2" />
+          <h2 className="text-xl font-semibold text-gray-800">Upload Contract PDF</h2>
         </div>
         <div className="mt-4">
           <label className="block mb-2">
             <span className="sr-only">Choose file</span>
-            <input 
-              type="file" 
+            <input
+              type="file"
               onChange={handleFileChange}
               className="block w-full text-sm text-gray-500
                 file:mr-4 file:py-2 file:px-4
@@ -65,11 +66,10 @@ const FileUpload = ({ onUpload }) => {
           <button
             onClick={handleUpload}
             disabled={!file || uploading}
-            className={`w-full px-4 py-2 text-white font-semibold rounded-lg ${
-              !file || uploading
+            className={`w-full px-4 py-2 text-white font-semibold rounded-lg ${!file || uploading
                 ? 'bg-gray-300 cursor-not-allowed'
                 : 'bg-blue-500 hover:bg-blue-600'
-            } transition duration-300 ease-in-out`}
+              } transition duration-300 ease-in-out`}
           >
             {uploading ? 'Uploading...' : 'Upload'}
           </button>

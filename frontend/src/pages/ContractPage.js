@@ -1,4 +1,4 @@
-// components/ContractPage.js
+// src/components/ContractPage.js
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
@@ -10,6 +10,7 @@ import GenerateSalary from '../components/GenerateSalary';
 import DisplaySalary from '../components/DisplaySalary';
 import GenerateInvoice from '../components/GenerateInvoice';
 import './ContractPage.css';
+import { API_URL } from '../config';
 
 const ContractPage = () => {
   const { id } = useParams();
@@ -23,7 +24,7 @@ const ContractPage = () => {
   useEffect(() => {
     const fetchContracts = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/contracts');
+        const response = await axios.get(API_URL);
         setContracts(response.data);
       } catch (error) {
         console.error('Error fetching contracts:', error);
@@ -36,7 +37,7 @@ const ContractPage = () => {
   useEffect(() => {
     const fetchContract = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/contracts/${id}`);
+        const response = await axios.get(`${API_URL}/${id}`);
         setContract(response.data);
         console.log('Fetched contract:', response.data);
       } catch (error) {
@@ -46,7 +47,7 @@ const ContractPage = () => {
 
     const fetchEmployees = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/contracts/${id}/employees`);
+        const response = await axios.get(`${API_URL}/${id}/employees`);
         console.log('Fetched employees:', response.data);
         setEmployees(response.data);
       } catch (error) {
@@ -60,18 +61,18 @@ const ContractPage = () => {
 
   const handleAddEmployee = async (newEmployee) => {
     try {
-      const response = await axios.post(`http://localhost:5000/api/contracts/${id}/employees`, newEmployee);
+      const response = await axios.post(`${API_URL}/${id}/employees`, newEmployee);
       setEmployees([...employees, response.data]);
     } catch (error) {
       console.error('Error adding employee:', error);
     }
   };
 
-  const handleEditEmployee = async (id, updatedEmployee) => {
+  const handleEditEmployee = async (empId, updatedEmployee) => {
     try {
-      await axios.put(`http://localhost:5000/api/contracts/${id}/employees/${id}`, updatedEmployee);
+      await axios.put(`${API_URL}/${id}/employees/${empId}`, updatedEmployee);
       setEmployees((prevEmployees) =>
-        prevEmployees.map((emp) => (emp._id === id ? { ...emp, ...updatedEmployee } : emp))
+        prevEmployees.map((emp) => (emp._id === empId ? { ...emp, ...updatedEmployee } : emp))
       );
     } catch (error) {
       console.error('Error updating employee:', error);
@@ -80,7 +81,7 @@ const ContractPage = () => {
 
   const handleDeleteEmployee = async (employeeId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/contracts/${id}/employees/${employeeId}`);
+      await axios.delete(`${API_URL}/${id}/employees/${employeeId}`);
       setEmployees((prevEmployees) =>
         prevEmployees.filter((emp) => emp._id !== employeeId)
       );
@@ -184,4 +185,3 @@ const ContractPage = () => {
 };
 
 export default ContractPage;
-

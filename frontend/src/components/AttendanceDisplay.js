@@ -1,5 +1,7 @@
+// AttendanceDisplay.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { API_URL } from '../config';
 import './AttendanceDisplay.css';
 
 const AttendanceDisplay = ({ contractId }) => {
@@ -11,7 +13,7 @@ const AttendanceDisplay = ({ contractId }) => {
   useEffect(() => {
     const fetchAttendanceRecords = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/contracts/' + contractId + '/attendance', {
+        const response = await axios.get(`${API_URL}/${contractId}/attendance`, {
           params: { contractId, month, year }
         });
         console.log('Fetched attendance records from DB:', response.data);
@@ -27,7 +29,7 @@ const AttendanceDisplay = ({ contractId }) => {
   useEffect(() => {
     const fetchEmployees = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/contracts/${contractId}/employees`);
+        const response = await axios.get(`${API_URL}/${contractId}/employees`);
         console.log('Fetched employees:', response.data);
         setEmployees(response.data);
       } catch (error) {

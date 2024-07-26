@@ -1,8 +1,6 @@
+// src/apis/contractApi.js
 import axios from 'axios';
-
-const API_URL = 'http://localhost:5000/api/contracts';
-const COMPANY_API_URL = 'http://localhost:5000/api/company';
-const EMPLOYEES_API_URL = 'http://localhost:5000/api/employees';
+import { API_URL, COMPANY_API_URL, EMPLOYEES_API_URL } from '../config';
 
 export const getContracts = async () => {
   try {

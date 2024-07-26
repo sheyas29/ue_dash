@@ -1,5 +1,7 @@
+// AttendanceForm.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { API_URL } from '../config';
 
 const AttendanceForm = ({ contractId }) => {
   const [employees, setEmployees] = useState([]);
@@ -10,7 +12,7 @@ const AttendanceForm = ({ contractId }) => {
   useEffect(() => {
     const fetchEmployees = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/contracts/${contractId}/employees`);
+        const response = await axios.get(`${API_URL}/${contractId}/employees`);
         setEmployees(response.data);
       } catch (error) {
         console.error('Error fetching employees:', error);
@@ -46,7 +48,7 @@ const AttendanceForm = ({ contractId }) => {
     console.log('Saving attendance data:', { records: attendancePayload });
 
     try {
-      const response = await axios.post(`http://localhost:5000/api/contracts/${contractId}/attendance`, { records: attendancePayload });
+      const response = await axios.post(`${API_URL}/${contractId}/attendance`, { records: attendancePayload });
       console.log('Attendance data saved:', response.data);
     } catch (error) {
       console.error('Error saving attendance data:', error);

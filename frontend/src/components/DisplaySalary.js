@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './DisplaySalary.css';
+import { API_URL } from '../config';
 
 const DisplaySalary = ({ contractId, month, year }) => {
   const [salaries, setSalaries] = useState([]);
@@ -8,7 +9,7 @@ const DisplaySalary = ({ contractId, month, year }) => {
   useEffect(() => {
     const fetchSalaries = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/contracts/${contractId}/salaries`, {
+        const response = await axios.get(`${API_URL}/${contractId}/salaries`, {
           params: { month, year }
         });
         setSalaries(response.data);

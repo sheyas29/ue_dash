@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
-// import './GenerateInvoice.css';
 import { useReactToPrint } from 'react-to-print';
+import { API_URL } from '../config';
 
 const GenerateInvoice = ({ contractId, month, year }) => {
     const [salaries, setSalaries] = useState([]);
@@ -10,7 +10,7 @@ const GenerateInvoice = ({ contractId, month, year }) => {
     useEffect(() => {
         const fetchSalaries = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/contracts/${contractId}/salaries`, {
+                const response = await axios.get(`${API_URL}/${contractId}/salaries`, {
                     params: { month, year }
                 });
                 setSalaries(response.data);

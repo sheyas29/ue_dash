@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check, Clock, Archive,BarChart2 } from 'lucide-react';
+import { Check, Clock, Archive, } from 'lucide-react';
 
 const ContractsCountTracker = ({ contracts }) => {
   const activeContracts = contracts.filter(contract => contract.status === 'Active').length;
@@ -24,22 +24,22 @@ const ContractsCountTracker = ({ contracts }) => {
       
       <BarChart2 className="w-6 h-6 text-blue-500" /> */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        <CountCard 
-          icon={Check} 
-          title="Active" 
-          count={activeContracts} 
+        <CountCard
+          icon={Check}
+          title="Active"
+          count={activeContracts}
           color="text-green-500"
         />
-        <CountCard 
-          icon={Clock} 
-          title="Upcoming" 
-          count={upcomingContracts} 
+        <CountCard
+          icon={Clock}
+          title="Upcoming"
+          count={upcomingContracts}
           color="text-yellow-500"
         />
-        <CountCard 
-          icon={Archive} 
-          title="Completed" 
-          count={completedContracts} 
+        <CountCard
+          icon={Archive}
+          title="Completed"
+          count={completedContracts}
           color="text-blue-500"
         />
       </div>

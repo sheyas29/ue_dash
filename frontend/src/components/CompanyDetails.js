@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getCompanyDetails, updateCompanyDetails } from '../apis/contractApi';
-// import './CompanyDetails.css'; // Import the CSS file if needed for additional styles
+import { motion } from 'framer-motion';
+import { Building2, Phone, Mail, MapPin, CheckCircle, FileText, Users, User, CreditCard } from 'lucide-react';
 
 const CompanyDetails = () => {
   const [isEditing, setIsEditing] = useState(false);
@@ -52,142 +53,68 @@ const CompanyDetails = () => {
   };
 
   if (loading) {
-    return <div className="flex justify-center items-center h-full">Loading...</div>;
+    return (
+      <div className="flex justify-center items-center h-full">
+        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-indigo-500"></div>
+      </div>
+    );
   }
 
-  return (
-    <div className="bg-white rounded-lg shadow-md  w-700  ">
-      <h2 className="text-2xl font-bold text-center mb-6 bg-indian-red rounded-md">Company Details</h2>
-      {isEditing ? (
-        <form className="space-y-4">
-          <label className="block">
-            <span className="text-gray-700">GeM Seller ID:</span>
-            <input
-              type="text"
-              name="gemSellerId"
-              value={details.gemSellerId}
-              onChange={handleChange}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            />
-          </label>
-          <label className="block">
-            <span className="text-gray-700">Company Name:</span>
-            <input
-              type="text"
-              name="companyName"
-              value={details.companyName}
-              onChange={handleChange}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            />
-          </label>
-          <label className="block">
-            <span className="text-gray-700">Contact No.:</span>
-            <input
-              type="text"
-              name="contactNo"
-              value={details.contactNo}
-              onChange={handleChange}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            />
-          </label>
-          <label className="block">
-            <span className="text-gray-700">Email ID:</span>
-            <input
-              type="email"
-              name="email"
-              value={details.email}
-              onChange={handleChange}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            />
-          </label>
-          <label className="block">
-            <span className="text-gray-700">Address:</span>
-            <textarea
-              name="address"
-              value={details.address}
-              onChange={handleChange}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            />
-          </label>
-          <label className="block">
-            <span className="text-gray-700">MSME Verified:</span>
-            <input
-              type="text"
-              name="msmeVerified"
-              value={details.msmeVerified}
-              onChange={handleChange}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            />
-          </label>
-          <label className="block">
-            <span className="text-gray-700">MSME Registration Number:</span>
-            <input
-              type="text"
-              name="msmeRegistrationNumber"
-              value={details.msmeRegistrationNumber}
-              onChange={handleChange}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            />
-          </label>
-          <label className="block">
-            <span className="text-gray-700">MSE Social Category:</span>
-            <input
-              type="text"
-              name="mseSocialCategory"
-              value={details.mseSocialCategory}
-              onChange={handleChange}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            />
-          </label>
-          <label className="block">
-            <span className="text-gray-700">MSE Gender:</span>
-            <input
-              type="text"
-              name="mseGender"
-              value={details.mseGender}
-              onChange={handleChange}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            />
-          </label>
-          <label className="block">
-            <span className="text-gray-700">GSTIN:</span>
-            <input
-              type="text"
-              name="gstin"
-              value={details.gstin}
-              onChange={handleChange}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            />
-          </label>
-          <button
-            type="button"
-            onClick={handleEditToggle}
-            className="mt-4 bg-indigo-600 text-white px-4 py-2 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          >
-            Save
-          </button>
-        </form>
-      ) : (
-        <div className="space-y-4">
-          <p><strong>GeM Seller ID:</strong> {details.gemSellerId}</p>
-          <p><strong>Company Name:</strong> {details.companyName}</p>
-          <p><strong>Contact No.:</strong> {details.contactNo}</p>
-          <p><strong>Email ID:</strong> {details.email}</p>
-          <p><strong>Address:</strong> {details.address}</p>
-          <p><strong>MSME Verified:</strong> {details.msmeVerified}</p>
-          <p><strong>MSME Registration Number:</strong> {details.msmeRegistrationNumber}</p>
-          <p><strong>MSE Social Category:</strong> {details.mseSocialCategory}</p>
-          <p><strong>MSE Gender:</strong> {details.mseGender}</p>
-          <p><strong>GSTIN:</strong> {details.gstin}</p>
-          <button
-            onClick={handleEditToggle}
-            className="mt-4 bg-indigo-600 text-white px-4 py-2 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          >
-            Edit
-          </button>
-        </div>
-      )}
+  const DetailsItem = ({ icon, label, value, name }) => (
+    <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg transition-all duration-300 hover:bg-gray-100">
+      {icon}
+      <div className="flex-grow">
+        <p className="text-sm font-medium text-gray-500">{label}</p>
+        {isEditing ? (
+          <input
+            type="text"
+            name={name}
+            value={value}
+            onChange={handleChange}
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+          />
+        ) : (
+          <p className="text-base font-semibold text-gray-900">{value}</p>
+        )}
+      </div>
     </div>
+  );
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="bg-white rounded-xl shadow-lg overflow-hidden"
+    >
+      <div className="bg-gradient-to-r from-indigo-500 to-purple-600 p-6">
+        <h2 className="text-3xl font-bold text-white mb-2">Company Details</h2>
+        <p className="text-indigo-100">Manage your company information</p>
+      </div>
+      <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <DetailsItem icon={<Building2 className="text-indigo-500" />} label="Company Name" value={details.companyName} name="companyName" />
+        <DetailsItem icon={<CreditCard className="text-indigo-500" />} label="GeM Seller ID" value={details.gemSellerId} name="gemSellerId" />
+        <DetailsItem icon={<Phone className="text-indigo-500" />} label="Contact No." value={details.contactNo} name="contactNo" />
+        <DetailsItem icon={<Mail className="text-indigo-500" />} label="Email ID" value={details.email} name="email" />
+        <DetailsItem icon={<MapPin className="text-indigo-500" />} label="Address" value={details.address} name="address" />
+        <DetailsItem icon={<CheckCircle className="text-indigo-500" />} label="MSME Verified" value={details.msmeVerified} name="msmeVerified" />
+        <DetailsItem icon={<FileText className="text-indigo-500" />} label="MSME Registration Number" value={details.msmeRegistrationNumber} name="msmeRegistrationNumber" />
+        <DetailsItem icon={<Users className="text-indigo-500" />} label="MSE Social Category" value={details.mseSocialCategory} name="mseSocialCategory" />
+        <DetailsItem icon={<User className="text-indigo-500" />} label="MSE Gender" value={details.mseGender} name="mseGender" />
+        <DetailsItem icon={<CreditCard className="text-indigo-500" />} label="GSTIN" value={details.gstin} name="gstin" />
+      </div>
+      <div className="px-6 py-4 bg-gray-50 border-t border-gray-200">
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={handleEditToggle}
+          className={`w-full text-center py-3 rounded-lg text-white font-semibold transition-colors duration-300 ${isEditing ? 'bg-green-500 hover:bg-green-600' : 'bg-indigo-500 hover:bg-indigo-600'
+            }`}
+        >
+          {isEditing ? 'Save Changes' : 'Edit Details'}
+        </motion.button>
+      </div>
+    </motion.div>
   );
 };
 

@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
     font-family: 'Galgo Condensed';
     src: 
          url('/fonts/Galgo.woff') format('woff');
@@ -12,15 +12,15 @@
          url('/fonts/Galgo.woff') format('woff');
     font-weight: 700;
     font-style: normal;
-  }
+  } */
   
   
   
-  @layer base {
+  /* @layer base {
     body {
       @apply font-hind;
     }
-  }
+  } */
   @tailwind base;
   @tailwind components;
   @tailwind utilities;

@@ -1,7 +1,7 @@
 // components/InvoiceGenerator.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import './InvoiceGenerator.css';
+// import './InvoiceGenerator.css';
 
 const InvoiceGenerator = ({ contractId, month, year }) => {
     const [salaries, setSalaries] = useState([]);

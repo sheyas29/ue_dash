@@ -1,5 +1,5 @@
 import React from 'react';
-import './ContractList.css'; // Import the CSS file if needed for additional styles
+// import './ContractList.css'; // Import the CSS file if needed for additional styles
 
 const ContractList = ({ contracts, onDelete }) => {
   return (

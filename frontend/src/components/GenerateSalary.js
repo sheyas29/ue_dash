@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { API_URL } from '../config';  // Assuming you have a config.js file with API_URL exported
+import { API_URL } from '../config';
 
 const GenerateSalary = ({ contractId, month, year }) => {
   const [message, setMessage] = useState('');

@@ -1,5 +1,9 @@
 // server.js
+const path = require('path');
+require('dotenv').config();
+
 const express = require('express');
+
 const mongoose = require('mongoose');
 const cors = require('cors');
 const contractRoutes = require('./routes/contractRoutes');
@@ -7,7 +11,7 @@ const companyRoutes = require('./routes/companyRoutes');
 const uploadRoutes = require('./routes/uploadRoutes');
 const employeeRoutes = require('./routes/employeeRoutes');
 const attendanceRoutes = require('./routes/attendanceRoutes');
-require('dotenv').config();
+
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -23,8 +27,12 @@ mongoose.connect(process.env.MONGO_URI, {
   .catch((error) => {
     console.error('Error connecting to MongoDB', error);
   });
+// Middleware
+// Middleware
+app.use(cors({
+  origin: '*', // You can restrict this to your frontend's URL if needed
+}));
 
-app.use(cors());
 app.use(express.json());
 app.use('/api/contracts', contractRoutes);
 app.use('/api/company', companyRoutes);
@@ -39,6 +47,6 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'frontend', 'build', 'index.html'));
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server is running on port ${PORT}`);
 });

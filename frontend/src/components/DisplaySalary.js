@@ -90,9 +90,9 @@ const DisplaySalary = ({ contractId, month, year }) => {
               {salaries.map((salary, index) => (
                 <tr key={salary._id}>
                   <td>{index + 1}</td>
-                  <td>{salary.employeeId.name}</td>
-                  <td>{salary.employeeId.jobRole}</td>
-                  <td>{salary.employeeId.esic}</td>
+                  <td>{salary.employeeId ? salary.employeeId.name : 'Unknown'}</td>
+                  <td>{salary.employeeId ? salary.employeeId.jobRole : 'Unknown'}</td>
+                  <td>{salary.employeeId ? salary.employeeId.esic : 'N/A'}</td>
                   <td>{salary.attendance.toFixed(2)}</td>
                   <td>{salary.dailyWage}</td>
                   <td>{salary.grossSalary.toFixed(2)}</td>
@@ -105,8 +105,8 @@ const DisplaySalary = ({ contractId, month, year }) => {
                   <td>{salary.contribution.toFixed(2)}</td>
                   <td>{salary.adminCharges.toFixed(2)}</td>
                   <td>{salary.employerESIC.toFixed(2)}</td>
-                  <td>{salary.employeeId.bankAccount}</td>
-                  <td>{salary.employeeId.ifsc}</td>
+                  <td>{salary.employeeId ? salary.employeeId.bankAccount : 'N/A'}</td>
+                  <td>{salary.employeeId ? salary.employeeId.ifsc : 'N/A'}</td>
                 </tr>
               ))}
             </tbody>

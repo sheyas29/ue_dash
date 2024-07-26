@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: my-manpower-dashboard
+    env: node
+    buildCommand: powershell.exe -File build.ps1
+    startCommand: cd backend && npm start
+    plan: free

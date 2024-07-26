@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'Galgo Condensed';
     src: 
-         url('C:/Users/kshre/OneDrive/Desktop/my-manpower-dashboard/frontend/public/fonts/Galgo.woff') format('woff');
+         url('/fonts/Galgo.woff') format('woff');
     font-weight: 400;
     font-style: normal;
   }
@@ -9,7 +9,7 @@
   @font-face {
     font-family: 'Galgo Condensed';
     src: 
-         url('C:/Users/kshre/OneDrive/Desktop/my-manpower-dashboard/frontend/public/fonts/Galgo.woff') format('woff');
+         url('/fonts/Galgo.woff') format('woff');
     font-weight: 700;
     font-style: normal;
   }
